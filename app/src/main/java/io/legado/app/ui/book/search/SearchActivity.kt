@@ -172,9 +172,12 @@ class SearchActivity : VMBaseActivity<ActivityBookSearchBinding, SearchViewModel
             R.id.menu_source_diagnostics -> {
                 val progress = viewModel.searchProgressLiveData.value
                 val details = viewModel.sourceDiagnostics.values.sorted().joinToString("\n\n")
+                val rawCount = viewModel.searchBookLiveData.value?.size ?: 0
+                val visibleCount = adapter.itemCount
                 showDialogFragment(io.legado.app.ui.widget.dialog.TextDialog(
                     "书源搜索诊断",
-                    "已完成 ${progress?.first ?: 0} / ${progress?.second ?: 0} 个书源\n\n" +
+                    "已完成 ${progress?.first ?: 0} / ${progress?.second ?: 0} 个书源\n" +
+                        "合并结果 $rawCount / 列表 $visibleCount / 已绑定 ${binding.recyclerView.adapter?.itemCount ?: 0}\n\n" +
                         details.ifEmpty { "搜索后显示每个来源的命中数、响应时间与失败原因。" },
                     io.legado.app.ui.widget.dialog.TextDialog.Mode.TEXT
                 ))
@@ -219,6 +222,8 @@ class SearchActivity : VMBaseActivity<ActivityBookSearchBinding, SearchViewModel
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 searchView.clearFocus()
+                adapter.setItemsNoDiff(emptyList())
+                binding.recyclerView.scrollToPosition(0)
                 query.trim().let { searchKey ->
                     isManualStopSearch = false
                     viewModel.saveSearchKey(searchKey)

@@ -50,6 +50,8 @@ class SearchResultMergerTest {
         ), "万古神帝", true)
         assertEquals(1, next.size)
         assertEquals(2, next.single().origins.size)
+        assertSame(first.single(), next.single())
+        assertEquals("https://a/book", next.single().bookUrl)
     }
 
     @Test fun authorSearchRetainsDifferentWorksAndPrecisionFiltersUnrelatedHits() = runBlocking {

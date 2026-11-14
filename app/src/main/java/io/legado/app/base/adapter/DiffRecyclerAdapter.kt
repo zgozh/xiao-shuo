@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import splitties.views.onLongClick
+import io.legado.app.constant.AppLog
 
 /**
  * Created by Invincible on 2017/12/15.
@@ -67,6 +68,8 @@ abstract class DiffRecyclerAdapter<ITEM, VB : ViewBinding>(protected val context
                 layoutState = layoutManager?.onSaveInstanceState()
             }
             asyncListDiffer.submitList(items?.toMutableList())
+        }.onFailure {
+            AppLog.put("提交列表失败：${javaClass.simpleName}", it)
         }
     }
 

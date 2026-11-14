@@ -11,7 +11,6 @@ import io.legado.app.base.adapter.ItemViewHolder
 import io.legado.app.data.entities.SearchBook
 import io.legado.app.databinding.ItemSearchBinding
 import io.legado.app.help.config.AppConfig
-import io.legado.app.help.book.bookIdentity
 import io.legado.app.utils.gone
 import io.legado.app.utils.visible
 
@@ -22,31 +21,7 @@ class SearchAdapter(context: Context, val callBack: CallBack) :
     override val keepScrollPosition = true
 
     override val diffItemCallback: DiffUtil.ItemCallback<SearchBook>
-        get() = object : DiffUtil.ItemCallback<SearchBook>() {
-
-            override fun areItemsTheSame(oldItem: SearchBook, newItem: SearchBook): Boolean {
-                return bookIdentity(oldItem.name, oldItem.author) == bookIdentity(newItem.name, newItem.author)
-            }
-
-            override fun areContentsTheSame(oldItem: SearchBook, newItem: SearchBook): Boolean {
-                return false
-            }
-
-            override fun getChangePayload(oldItem: SearchBook, newItem: SearchBook): Any {
-                val payload = Bundle()
-                payload.putInt("origins", newItem.origins.size)
-                if (oldItem.coverUrl != newItem.coverUrl)
-                    payload.putString("cover", newItem.coverUrl)
-                if (oldItem.kind != newItem.kind)
-                    payload.putString("kind", newItem.kind)
-                if (oldItem.latestChapterTitle != newItem.latestChapterTitle)
-                    payload.putString("last", newItem.latestChapterTitle)
-                if (oldItem.intro != newItem.intro)
-                    payload.putString("intro", newItem.intro)
-                return payload
-            }
-
-        }
+        get() = SearchResultDiffCallback()
 
     override fun getViewBinding(parent: ViewGroup): ItemSearchBinding {
         return ItemSearchBinding.inflate(inflater, parent, false)

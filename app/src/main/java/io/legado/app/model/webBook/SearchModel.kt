@@ -141,7 +141,13 @@ class SearchModel(private val scope: CoroutineScope, private val callBack: CallB
                 }
                 hasMore = hasMore || items.isNotEmpty()
                 appDb.searchBookDao.insert(*items.toTypedArray())
-                mergeItems(items, precision, key)
+                try {
+                    mergeItems(items, precision, key)
+                } catch (error: Throwable) {
+                    if (error is CancellationException) throw error
+                    AppLog.put("搜索结果合并失败，输入 ${items.size} 本", error)
+                    throw error
+                }
                 currentCoroutineContext().ensureActive()
                 callBack.onSearchSuccess(searchBooks)
             }.onCompletion { error ->
