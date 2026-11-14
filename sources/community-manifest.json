@@ -1,0 +1,11 @@
+{
+  "upstream": "https://raw.githubusercontent.com/shidahuilang/shuyuan-bak/main/good.json",
+  "license": "SHIDAHUILANG-LICENSE",
+  "retrievedAt": "2026-11-14T10:00:53.375712+00:00",
+  "upstreamSha256": "0f64d6b80b9501673c01d26a5856a5314f0d68ba18634586c75c4203a097cc9a",
+  "upstreamRecordCount": 2973,
+  "selectedRecordCount": 300,
+  "selectedSha256": "81e020f0c39abcd4110ab8bcbedf4debdea2ad49af2d152109685c88aafc568d",
+  "runtimeVerified": false,
+  "note": "候选规则不等于已检测通过；保留原作者注释，按规范化主机去重，排除明显非中文文字小说及无效时间戳排序。"
+}

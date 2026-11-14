@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "repositories": [
+    {
+      "name": "勾彬 · 中文小说补充候选",
+      "url": "https://raw.githubusercontent.com/zgozh/xiao-shuo/main/app/src/main/assets/defaultData/goubinCommunitySources.json",
+      "homepage": "https://github.com/shidahuilang/shuyuan-bak",
+      "description": "从大型社区集合筛选的 300 条中文文字小说规则，按主机去重；候选不代表当前检测通过，请按实际搜索与正文结果选择。"
+    },
+    {
+      "name": "XIU2 · 中文小说书源",
+      "url": "https://raw.githubusercontent.com/XIU2/Yuedu/master/shuyuan",
+      "homepage": "https://github.com/XIU2/Yuedu",
+      "description": "社区维护的中文小说规则集合。下载后预览并选择导入；网站是否收录、正文是否完整以实际检测为准。"
+    },
+    {
+      "name": "大灰狼 · 自动校验候选池",
+      "url": "https://raw.githubusercontent.com/shidahuilang/shuyuan-bak/main/good.json",
+      "homepage": "https://github.com/shidahuilang/shuyuan-bak",
+      "description": "维护者发布的大型集合，含多种内容类型与第三方规则，适合进一步选择导入；维护者校验不等同于本机正文验证。"
+    },
+    {
+      "name": "AOAOSTAR · 社区集合镜像",
+      "url": "https://legado.aoaostar.com/sources/b778fe6b.json",
+      "homepage": "https://github.com/aoaostar/legado",
+      "description": "大型汇总镜像，便于按需扩充。集合可能包含重复、旧规则及非小说来源；同步日期不等于规则修复日期。"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="goubin_primary">#275D49</color>
+    <color name="goubin_accent">#846238</color>
+    <color name="goubin_paper">#F7F5F0</color>
+    <color name="goubin_surface">#EAE7DE</color>
+</resources>
