@@ -11,6 +11,7 @@ import io.legado.app.base.adapter.ItemViewHolder
 import io.legado.app.data.entities.SearchBook
 import io.legado.app.databinding.ItemSearchBinding
 import io.legado.app.help.config.AppConfig
+import io.legado.app.help.book.bookIdentity
 import io.legado.app.utils.gone
 import io.legado.app.utils.visible
 
@@ -24,11 +25,7 @@ class SearchAdapter(context: Context, val callBack: CallBack) :
         get() = object : DiffUtil.ItemCallback<SearchBook>() {
 
             override fun areItemsTheSame(oldItem: SearchBook, newItem: SearchBook): Boolean {
-                return when {
-                    oldItem.name != newItem.name -> false
-                    oldItem.author != newItem.author -> false
-                    else -> true
-                }
+                return bookIdentity(oldItem.name, oldItem.author) == bookIdentity(newItem.name, newItem.author)
             }
 
             override fun areContentsTheSame(oldItem: SearchBook, newItem: SearchBook): Boolean {

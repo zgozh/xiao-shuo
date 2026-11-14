@@ -1,0 +1,230 @@
+[
+    {
+        "id":  "hot",
+        "sourceUrl":  "https://m.qidian.com##部分限免源",
+        "sourceName":  "起点限免（优+）",
+        "categoryTitle":  "月票榜",
+        "categoryUrl":  "/majax/rank/yuepiaolist?gender=male\u0026pageNum={{page}}\u0026_csrfToken={{cookie.getKey(\"https://qidian.com\",\"_csrfToken\")}}",
+        "updatedAt":  1794654056983,
+        "books":  [
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1050460263/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "神宠供应商",
+                          "author":  "轻泉流响",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1050460263",
+                          "kind":  "4.26万月票,轻小说,原生幻想",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1035420986/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "玄鉴仙族",
+                          "author":  "季越人",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1035420986",
+                          "kind":  "4.23万月票,仙侠,修真文明",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1040765595/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "夜无疆",
+                          "author":  "辰东",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1040765595",
+                          "kind":  "3.42万月票,玄幻,东方玄幻",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1010868264/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "诡秘之主",
+                          "author":  "爱潜水的乌贼",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1010868264",
+                          "kind":  "3.22万月票,玄幻,异世大陆",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1049898328/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "请勿高考时渡劫",
+                          "author":  "最白的乌鸦",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1049898328",
+                          "kind":  "2.89万月票,都市,都市异能",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1049107474/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "让仙门再次伟大",
+                          "author":  "鹤守月满池",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1049107474",
+                          "kind":  "2.42万月票,玄幻,东方玄幻",
+                          "latestChapterTitle":  ""
+                      }
+                  ]
+    },
+    {
+        "id":  "new",
+        "sourceUrl":  "https://www.sudugu.co",
+        "sourceName":  "速读谷",
+        "categoryTitle":  "最近更新",
+        "categoryUrl":  "/top/lastupdate/{{page}}.html",
+        "updatedAt":  1794654059114,
+        "books":  [
+                      {
+                          "bookUrl":  "https://www.sudugu.cc/1659/",
+                          "origin":  "https://www.sudugu.co",
+                          "originName":  "速读谷",
+                          "type":  8,
+                          "name":  "武道！",
+                          "author":  "田隶",
+                          "coverUrl":  "https://www.sudugu.cc/files/article/image/1/1659/1659s.jpg",
+                          "kind":  "连载中,玄幻小说",
+                          "latestChapterTitle":  "第344章 大术(求月末月票)"
+                      },
+                      {
+                          "bookUrl":  "https://www.sudugu.cc/15/",
+                          "origin":  "https://www.sudugu.co",
+                          "originName":  "速读谷",
+                          "type":  8,
+                          "name":  "剑烛大荒",
+                          "author":  "爱潜水的乌贼",
+                          "coverUrl":  "https://www.sudugu.cc/files/article/image/0/15/15s.jpg",
+                          "kind":  "连载中,玄幻小说",
+                          "latestChapterTitle":  "第九十五章 忽然地出现"
+                      },
+                      {
+                          "bookUrl":  "https://www.sudugu.cc/359/",
+                          "origin":  "https://www.sudugu.co",
+                          "originName":  "速读谷",
+                          "type":  8,
+                          "name":  "灵境行者",
+                          "author":  "卖报小郎君",
+                          "coverUrl":  "https://www.sudugu.cc/files/article/image/0/359/359s.jpg",
+                          "kind":  "已完结,科幻小说",
+                          "latestChapterTitle":  "抽奖公告"
+                      },
+                      {
+                          "bookUrl":  "https://www.sudugu.cc/41/",
+                          "origin":  "https://www.sudugu.co",
+                          "originName":  "速读谷",
+                          "type":  8,
+                          "name":  "玄鉴仙族",
+                          "author":  "季越人",
+                          "coverUrl":  "https://www.sudugu.cc/files/article/image/0/41/41s.jpg",
+                          "kind":  "连载中,仙侠小说",
+                          "latestChapterTitle":  "第1647章 岂得之（1+1/2）"
+                      },
+                      {
+                          "bookUrl":  "https://www.sudugu.cc/25/",
+                          "origin":  "https://www.sudugu.co",
+                          "originName":  "速读谷",
+                          "type":  8,
+                          "name":  "没钱修什么仙？",
+                          "author":  "熊狼狗",
+                          "coverUrl":  "https://www.sudugu.cc/files/article/image/0/25/25s.jpg",
+                          "kind":  "连载中,仙侠小说",
+                          "latestChapterTitle":  "第1035章 熠心会，神帝复苏？（8000+求月票）"
+                      },
+                      {
+                          "bookUrl":  "https://www.sudugu.cc/48/",
+                          "origin":  "https://www.sudugu.co",
+                          "originName":  "速读谷",
+                          "type":  8,
+                          "name":  "夜无疆",
+                          "author":  "辰东",
+                          "coverUrl":  "https://www.sudugu.cc/files/article/image/0/48/48s.jpg",
+                          "kind":  "连载中,玄幻小说",
+                          "latestChapterTitle":  "第871章 天选打工者"
+                      }
+                  ]
+    },
+    {
+        "id":  "complete",
+        "sourceUrl":  "https://m.qidian.com##部分限免源",
+        "sourceName":  "起点限免（优+）",
+        "categoryTitle":  "畅销完本",
+        "categoryUrl":  "/majax/recommend/bestSelllist?gender=male\u0026pageNum={{page}}\u0026_csrfToken={{cookie.getKey(\"https://qidian.com\",\"_csrfToken\")}}",
+        "updatedAt":  1794654057400,
+        "books":  [
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1115277/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "斗罗大陆",
+                          "author":  "唐家三少",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1115277",
+                          "kind":  "玄幻,连载",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/2248950/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "最强弃少",
+                          "author":  "鹅是老五",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/2248950",
+                          "kind":  "仙侠,连载",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/3439785/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "修真四万年",
+                          "author":  "卧牛真人",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/3439785",
+                          "kind":  "科幻,连载",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1004984707/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "大唐贞观第一纨绔",
+                          "author":  "危险的世界",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1004984707",
+                          "kind":  "历史,连载",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1009265821/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "无疆",
+                          "author":  "小刀锋利",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1009265821",
+                          "kind":  "仙侠,连载",
+                          "latestChapterTitle":  ""
+                      },
+                      {
+                          "bookUrl":  "https://m.qidian.com/book/1004995075/",
+                          "origin":  "https://m.qidian.com##部分限免源",
+                          "originName":  "起点限免（优+）",
+                          "type":  8,
+                          "name":  "最强神话帝皇",
+                          "author":  "任我笑",
+                          "coverUrl":  "https://bookcover.yuewen.com/qdbimg/349573/1004995075",
+                          "kind":  "仙侠,连载",
+                          "latestChapterTitle":  ""
+                      }
+                  ]
+    }
+]

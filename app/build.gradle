@@ -31,8 +31,8 @@ static def releaseTime() {
 }
 
 def name = "goubin"
-def version = "1.0.0"
-def versionCodeValue = 1
+def version = "1.0.2"
+def versionCodeValue = 3
 def armOnly = project.findProperty("armOnly")?.toBoolean() ?: false
 
 android {

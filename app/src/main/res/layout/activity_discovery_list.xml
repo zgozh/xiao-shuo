@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <io.legado.app.ui.widget.TitleBar android:id="@+id/title_bar"
+        android:layout_width="match_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:paddingHorizontal="12dp">
+        <TextView android:id="@+id/categories"
+            android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"
+            android:gravity="center" android:background="?android:attr/selectableItemBackground"
+            android:textSize="14sp" android:text="切换榜单 / 分类" />
+        <TextView android:id="@+id/sources"
+            android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"
+            android:gravity="center" android:background="?android:attr/selectableItemBackground"
+            android:textSize="14sp" android:text="切换书源" />
+    </LinearLayout>
+    <TextView android:id="@+id/status" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp" android:textSize="13sp" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/books"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:paddingHorizontal="10dp" android:clipToPadding="false" />
+    <androidx.appcompat.widget.AppCompatButton android:id="@+id/next_page"
+        android:layout_width="match_parent" android:layout_height="52dp"
+        android:text="加载下一页" android:textAllCaps="false" />
+</LinearLayout>

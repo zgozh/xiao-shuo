@@ -40,6 +40,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity android:name=".ui.main.hub.SourceCatalogActivity" android:exported="false" />
         <activity android:name=".ui.main.hub.AllExploreActivity" android:exported="false" />
+        <activity android:name=".ui.main.hub.DiscoveryListActivity" android:exported="false" />
         <activity android:name=".ui.main.hub.AppearanceActivity" android:exported="false" />
         <activity android:name=".ui.main.hub.SubscriptionsActivity" android:exported="false" />
         <!-- 主入口 -->
