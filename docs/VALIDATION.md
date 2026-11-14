@@ -44,6 +44,12 @@
 
 搜索命中、目录可读、抽样正文可读和整本完整是不同层次；不把前者当成后者。外部网站、授权范围、登录和网络条件会改变结果。
 
-书源目录刷新需要本仓库 main 分支发布后才能请求到自己的远端索引；离线内置目录与规则快照可独立使用。
+书源目录刷新和匿名应用更新需要本仓库允许公开读取；SSH 推送已成功，但首次匿名访问返回 404，待仓库可见性调整后验证。离线内置目录与规则快照可独立使用。
+
+## CI 环境修复
+
+首次 GitHub Actions 运行在 `android-actions/setup-android@v3` 的 SDK/许可证准备阶段失败，尚未开始 Gradle 构建。日志显示 Runner 已有工具 20.0，Action 又安装了 16.0；用户提供的片段未包含最终退出原因。
+
+修复将构建与签名任务固定为 Ubuntu 24.04，直接检查并复用预装 Android 36 SDK 与 Build Tools 36，移除重复工具安装和许可证处理。预装包依据 [GitHub Runner 官方清单](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)。这是 CI 配置修复，实际远端成功状态需以新运行结果为准，不以本地构建成功替代。
 
 最终交付 APK 的哈希以 `downloads/SHA256SUMS.txt` 为准。发布私钥与个人 SDK/代理配置均不提交。
