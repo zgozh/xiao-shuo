@@ -16,7 +16,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@v4
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
       - run: ./gradlew :app:assembleAppDebug :app:testAppDebugUnitTest --tests '*ContentQualityTest' --tests '*SourceRepositoryTest' --tests '*SourceRecommendationTest' --tests '*ReaderPresetsTest' --tests '*SearchProgressReporterTest' --tests '*SearchPaginationContractTest' --tests '*SearchCommandGateTest' --tests '*ReadStyleLineSpacingTest' --tests '*ChangeSource*Test' --tests '*SourceNavigationPolicyTest'
@@ -36,7 +36,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@v4
       - uses: gradle/actions/setup-gradle@v4
       - name: Build signed APK
         env:
