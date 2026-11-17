@@ -4,7 +4,7 @@
 
 支持 Android 8.0 及以上。源码遵循 GPL-3.0，保留上游许可与贡献者信息。
 
-[直接下载 1.0.3 APK](https://github.com/zgozh/xiao-shuo/raw/refs/heads/main/downloads/goubin_1.0.3.apk) · [版本发布](https://github.com/zgozh/xiao-shuo/releases) · [验证记录](docs/VALIDATION.md)
+[直接下载 1.0.4 APK](https://github.com/zgozh/xiao-shuo/raw/refs/heads/main/downloads/goubin_1.0.4.apk) · [版本发布](https://github.com/zgozh/xiao-shuo/releases) · [验证记录](docs/VALIDATION.md)
 
 ## 找书与阅读
 
@@ -58,7 +58,7 @@
 
 GitHub Actions 在 main 与 PR 构建调试 APK。发布工作流使用 `v*` 标签，并需要仓库 Secrets：`RELEASE_KEY_STORE`（本机 p12 文件的 Base64）、`RELEASE_STORE_PASSWORD`、`RELEASE_KEY_PASSWORD`。签名别名为 `goubin`。APK 资产名称使用 `goubin_版本号.apk`，以便应用内更新识别。
 
-正式 APK 在本机签名，随 `downloads/` 提供；main 的 CI 构建通过后，工作流可使用仓库令牌把已有签名的包发布到 1.0.3 Release，无需上传签名私钥。从源码在 CI 签名时才需要上述 Secrets。
+正式 APK 在本机签名，随 `downloads/` 提供；main 的 CI 构建通过后，工作流可使用仓库令牌把已有签名的包发布到 1.0.4 Release，无需上传签名私钥。从源码在 CI 签名时才需要上述 Secrets。
 
 应用内更新只查询本仓库的 Releases，不会安装上游项目的更新。
 

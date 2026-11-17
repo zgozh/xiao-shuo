@@ -26,16 +26,20 @@ import java.io.File
 object DefaultData {
 
     fun installGoubinSources() {
-        if (appCtx.getPrefInt("goubinInitialSourcesVersion", 0) >= 2) return
-        val sources = listOf("goubinSources.json", "goubinCommunitySources.json").flatMap { name ->
+        if (appCtx.getPrefInt("goubinInitialSourcesVersion", 0) >= 4) return
+        val sources = listOf("goubinSources.json", "goubinCommunitySources.json", "goubinLightNovelSources.json", "goubinJapaneseTextSources.json").flatMap { name ->
             val json = appCtx.assets.open("defaultData/$name").bufferedReader().use { it.readText() }
             GSON.fromJsonArray<BookSource>(json).getOrThrow()
         }.distinctBy { it.bookSourceUrl }
         appDb.runInTransaction {
             sources.filter { appDb.bookSourceDao.getBookSource(it.bookSourceUrl) == null }
                 .forEach { appDb.bookSourceDao.insert(it) }
+            // Add groups without replacing existing rules, enable flags or user edits.
+            appDb.bookSourceDao.getBookSource("https://www.esjzone.one")?.let {
+                appDb.bookSourceDao.insert(it.addGroup("日本轻小说,轻小说译本"))
+            }
         }
-        appCtx.putPrefInt("goubinInitialSourcesVersion", 2)
+        appCtx.putPrefInt("goubinInitialSourcesVersion", 4)
     }
 
     fun upVersion() {

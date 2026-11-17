@@ -23,7 +23,7 @@ jobs:
           printf 'Using preinstalled Android SDK: %s\n' "$ANDROID_HOME"
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
-      - run: ./gradlew :app:assembleAppDebug :app:testAppDebugUnitTest --tests '*Discovery*Test' --tests '*SearchResultMergerTest' --tests '*SearchResultDiffCallbackTest' --tests '*ContentQualityTest' --tests '*SourceRepositoryTest' --tests '*SourceRecommendationTest' --tests '*ReaderPresetsTest' --tests '*SearchProgressReporterTest' --tests '*SearchPaginationContractTest' --tests '*SearchCommandGateTest' --tests '*ReadStyleLineSpacingTest' --tests '*ChangeSource*Test' --tests '*SourceNavigationPolicyTest'
+      - run: ./gradlew :app:assembleAppDebug :app:testAppDebugUnitTest --tests '*JapaneseSourceRuleTest' --tests '*Discovery*Test' --tests '*SearchResultMergerTest' --tests '*SearchResultDiffCallbackTest' --tests '*ContentQualityTest' --tests '*SourceRepositoryTest' --tests '*SourceRecommendationTest' --tests '*ReaderPresetsTest' --tests '*SearchProgressReporterTest' --tests '*SearchPaginationContractTest' --tests '*SearchCommandGateTest' --tests '*ReadStyleLineSpacingTest' --tests '*ChangeSource*Test' --tests '*SourceNavigationPolicyTest'
       - uses: actions/upload-artifact@v4
         with:
           name: goubin-debug
@@ -79,10 +79,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          test -f downloads/goubin_1.0.3.apk || exit 0
+          test -f downloads/goubin_1.0.4.apk || exit 0
           (cd downloads && sha256sum -c SHA256SUMS.txt)
-          if gh release view v1.0.3 >/dev/null 2>&1; then
-            echo 'Version 1.0.3 already published; existing assets retained.'
+          if gh release view v1.0.4 >/dev/null 2>&1; then
+            echo 'Version 1.0.4 already published; existing assets retained.'
             exit 0
           fi
-          gh release create v1.0.3 downloads/goubin_1.0.3.apk downloads/SHA256SUMS.txt --target "$GITHUB_SHA" --title '勾彬小说 1.0.3' --notes-file docs/RELEASE-1.0.3.md
+          gh release create v1.0.4 downloads/goubin_1.0.4.apk downloads/SHA256SUMS.txt --target "$GITHUB_SHA" --title '勾彬小说 1.0.4' --notes-file docs/RELEASE-1.0.4.md

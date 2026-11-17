@@ -138,7 +138,7 @@ class DiscoveryListActivity : BaseActivity<ActivityDiscoveryListBinding>() {
         selecting = lifecycleScope.launch {
             val sources = withContext(Dispatchers.IO) {
                 appDb.bookSourceDao.allEnabledExplore.filter {
-                    it.enabled && it.bookSourceType == 0 && !it.exploreUrl.isNullOrBlank()
+                    it.enabled && (it.bookSourceType == 0 || (sectionId == "japanese" && it.bookSourceType == 3)) && !it.exploreUrl.isNullOrBlank()
                 }.sortedBy { if (it.bookSourceUrl == sourceUrl) 0 else 1 }
             }
             if (sources.isEmpty()) { toastOnUi("没有可用的发现书源"); return@launch }

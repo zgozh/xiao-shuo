@@ -33,6 +33,7 @@ internal val discoveryTabs = listOf(
     DiscoveryTab("suspense", "悬疑", Regex("悬疑|灵异")),
     DiscoveryTab("game", "游戏", Regex("游戏|网游")),
     DiscoveryTab("romance", "言情", Regex("言情|女生|女频")),
+    DiscoveryTab("japanese", "日本轻小说", Regex("最新|最高评分|最多观看|最多收藏")),
 )
 
 internal val discoveryRankIds = setOf("hot", "bestsell", "votes", "daily", "weekly")
@@ -119,7 +120,9 @@ internal class DiscoveryLoader(
         } else {
             listOf("https://m.qidian.com##部分限免源", "https://www.sudugu.co", "http://wap.80zw.la/", "https://www.shuhaige.net/")
         }
-        val ordered = sources.filter { it.enabled && it.enabledExplore && it.bookSourceType == 0 }
+        val ordered = sources.filter { it.enabled && it.enabledExplore &&
+            (it.bookSourceType == 0 || (tab.id == "japanese" && it.bookSourceType == 3)) }
+            .filter { tab.id != "japanese" || it.hasGroup("日本轻小说") }
             .sortedBy { source ->
                 if (source.bookSourceUrl == previous?.sourceUrl) {
                     if (rotate) Int.MAX_VALUE else -1
@@ -136,6 +139,8 @@ internal class DiscoveryLoader(
                         val categories = kinds(source).filter {
                             it.type == ExploreKind.Type.url && !it.url.isNullOrBlank() &&
                                 !it.title.startsWith("ERROR:") && tab.pattern.containsMatchIn(it.title)
+                                && (tab.id != "japanese" || source.bookSourceUrl != "https://www.esjzone.one" ||
+                                it.url.orEmpty().startsWith("/list-1"))
                         }.distinctBy { it.url }.take(3)
                         for (category in categories) {
                             val books = discoveryBooks(fetch(source, category.url!!))

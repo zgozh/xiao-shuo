@@ -32,4 +32,10 @@
 
 ## 工作记录
 
+2026-11-17 日轻扩展：新增自行编写的 Novelia 文库规则，参考 [Auto Novel 官方开源项目](https://github.com/auto-novel/auto-novel) 的 `web/src/api/WenkuNovelApi.ts`、`WenkuNovel.vue` 和 `server/src/main/kotlin/api/RouteWenkuNovel.kt`。匿名 `/api/wenku` 可检索文库，详情列出的 `volumeZh` 对应站点公开 `/files-wenku/{id}/{卷名}` EPUB。普通 `/api/novel` 匿名访问返回 401，未将该接口接入。接口预检脚本 `scripts/check-light-novel-api.py`；本次须使用代理，直连失败。
+
+ESJ 实测可搜索「聖女」并读取《聖女，為祈求世界和平嘆息。》目录和一章正文；指定《回复术士的重启人生》未命中，旧详情已失效。哔哩搜索进入验证码页，抽查正文有截断提示；文库8各公开域名返回 Cloudflare 403，未标记为已验证来源。
+
+[ZWolken/Light-Novel-Yuedu-Source](https://github.com/ZWolken/Light-Novel-Yuedu-Source) 声明 MIT，并要求转载保留名称、注释。应用提供原作者 Release 合集的按需预览导入，保留源名称与注释，仅补充分组；不宣称半维护合集全量可用。
+
 本次使用 research skill 指定的独立研究代理核对主要渠道。代理在限定范围结束时返回了带来源的发现，未写入仓库；本文件由主会话根据返回结果及本机下载检查补齐。

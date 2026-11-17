@@ -66,7 +66,7 @@ class PlazaFragment : BaseFragment(R.layout.fragment_discovery), MainFragmentInt
         } else {
             viewLifecycleOwner.lifecycleScope.launch {
                 val enabled = withContext(Dispatchers.IO) {
-                    appDb.bookSourceDao.allEnabledExplore.filter { it.enabled && it.bookSourceType == 0 }
+                    appDb.bookSourceDao.allEnabledExplore.filter { it.enabled && (it.bookSourceType == 0 || it.bookSourceType == 3) }
                         .map { it.bookSourceUrl }.toSet()
                 }
                 states.keys.toList().forEach { id ->
@@ -101,7 +101,7 @@ class PlazaFragment : BaseFragment(R.layout.fragment_discovery), MainFragmentInt
             val cache = DiscoveryCache(requireContext().applicationContext)
             val sources = withContext(Dispatchers.IO) {
                 appDb.bookSourceDao.allEnabledExplore.filter {
-                    it.enabled && it.bookSourceType == 0 && !it.exploreUrl.isNullOrBlank()
+                    it.enabled && (it.bookSourceType == 0 || it.bookSourceType == 3) && !it.exploreUrl.isNullOrBlank()
                 }
             }
             val enabled = sources.map { it.bookSourceUrl }.toSet()

@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-17",
+  "sources": [
+    {
+      "asset": "goubinJapaneseTextSources.json",
+      "upstream": "https://github.com/yolo52/Yuedu/blob/main/轻小说.json",
+      "name": "拷贝轻小说[Yolo]",
+      "license": "GPL-3.0",
+      "licenseFile": "YOLO-LICENSE",
+      "changes": "search pagination, simplified search labels, per-volume chapter boundaries, illustrations, cached volume text, fail on missing/locked volumes"
+    },
+    {
+      "asset": "goubinLightNovelSources.json",
+      "implementation": "Original Legado rule for the public Novelia Wenku catalog and Chinese EPUB downloads",
+      "reference": "https://github.com/auto-novel/auto-novel",
+      "license": "GPL-3.0"
+    }
+  ],
+  "limits": "Sample HTTP and reader checks do not guarantee all titles, all volumes, uncut contents or future service availability. No novel files are included in the APK or repository."
+}

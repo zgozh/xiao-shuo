@@ -7,6 +7,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import io.legado.app.base.BaseActivity
 import io.legado.app.databinding.ActivityReaderHubBinding
+import io.legado.app.data.entities.BookSource
+import io.legado.app.utils.GSON
+import io.legado.app.utils.fromJsonArray
+import io.legado.app.utils.toastOnUi
 import io.legado.app.help.http.okHttpClient
 import io.legado.app.ui.association.ImportBookSourceDialog
 import io.legado.app.ui.book.source.manage.BookSourceActivity
@@ -65,11 +69,39 @@ class SourceCatalogActivity : BaseActivity<ActivityReaderHubBinding>() {
                     showDialogFragment(ImportBookSourceDialog(repository.url))
                 }
             }
+            heading("日本小说与轻小说", 19f)
+            note("内置 ESJ Zone 章节译本、Novelia 文库分卷 EPUB 已归入日本轻小说。更多译本和日文原版可按需导入；以下合集由 ZWolken 社区维护，部分网站需要登录或验证码，当前可用性以逐源检测为准。")
+            action("导入日轻中文译本候选源") {
+                importLightNovelSources("Japan_based_bookSource.json", "日本轻小说")
+            }
+            action("导入日文原版候选源") {
+                importLightNovelSources("Japanese_original_bookSource.json", "日文原版")
+            }
             action("从网址导入书源") { importUrl() }
             action("管理、检测与订阅书源") { startActivity<BookSourceActivity>() }
             heading("提高搜索与正文质量", 19f)
             note("1. 导入后在书源管理中检测搜索、目录和正文。\n2. 优先启用响应正常的来源，失效来源可停用。\n3. 章节缺失、乱码或删节时，在阅读菜单中换源对照。\n4. 在书源管理中添加订阅，后续启动时检查规则更新。")
             note("书源规则包含脚本，请选择可信维护者。应用不要求登录，不提供付费内容解锁。")
+        }
+    }
+
+    private fun importLightNovelSources(file: String, group: String) {
+        lifecycleScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                runCatching {
+                    val url = "https://github.com/ZWolken/Light-Novel-Yuedu-Source/releases/latest/download/$file"
+                    val client = okHttpClient.newBuilder().callTimeout(30, TimeUnit.SECONDS).build()
+                    client.newCall(Request.Builder().url(url).build()).execute().use { response ->
+                        check(response.isSuccessful) { "HTTP ${response.code}" }
+                        val sources = GSON.fromJsonArray<BookSource>(response.body.string()).getOrThrow()
+                        GSON.toJson(sources.map { it.addGroup(group) })
+                    }
+                }
+            }
+            result.fold(
+                onSuccess = { showDialogFragment(ImportBookSourceDialog(it)) },
+                onFailure = { toastOnUi("日轻合集获取失败：${it.localizedMessage}，请重试或从网址导入。") },
+            )
         }
     }
 

@@ -5,6 +5,8 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.lifecycle.lifecycleScope
 import io.legado.app.R
 import io.legado.app.base.BaseFragment
@@ -44,6 +46,20 @@ class ReadingHubFragment : BaseFragment(R.layout.fragment_reading_hub), MainFrag
                 if (!dashboard) {
                     heading("好故事，从这里开始")
                     note("同时搜索已启用的书源，支持书名、作者与关键词。")
+                    var scope = ""
+                    val ranges = RadioGroup(context).apply {
+                        orientation = RadioGroup.HORIZONTAL
+                        listOf("全部书源" to "", "日本轻小说" to "日本轻小说").forEach { (label, value) ->
+                            addView(RadioButton(context).apply {
+                                id = View.generateViewId()
+                                text = label
+                                isChecked = value.isEmpty()
+                                setOnCheckedChangeListener { _, checked -> if (checked) scope = value }
+                            })
+                        }
+                    }
+                    addView(ranges)
+                    note("日本轻小说：优先查找中文译本；原文名、简繁体和不同译名可能影响命中。搜索页右上角也可切换书源分组。")
                     val input = EditText(context).apply {
                         hint = "输入书名或作者"
                         textSize = 18f
@@ -52,14 +68,14 @@ class ReadingHubFragment : BaseFragment(R.layout.fragment_reading_hub), MainFrag
                         minHeight = 56.dpToPx()
                         setOnEditorActionListener { _, action, _ ->
                             if (action == EditorInfo.IME_ACTION_SEARCH) {
-                                SearchActivity.start(context, text.toString().trim(), "")
+                                SearchActivity.start(context, text.toString().trim(), scope)
                                 true
                             } else false
                         }
                     }
                     addView(input, LinearLayout.LayoutParams(-1, -2))
-                    action("搜索全部已启用书源") {
-                        SearchActivity.start(context, input.text.toString().trim(), "")
+                    action("按所选范围搜索") {
+                        SearchActivity.start(context, input.text.toString().trim(), scope)
                     }
                     card("书源状态", "已启用 ${sources.count { it.enabled }} / ${sources.size} 条规则\n检测通过 ${sources.count { it.checkStatus == "PASSED" }} 条 · 其余状态见书源管理\n启用不代表已经实测可读。") {
                         startActivity<BookSourceActivity>()

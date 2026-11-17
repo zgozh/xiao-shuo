@@ -122,3 +122,16 @@ HTTP 检查命令：`python scripts/check-discovery-api.py`（Python 依赖 requ
 修复将构建与签名任务固定为 Ubuntu 24.04，直接检查并复用预装 Android 36 SDK 与 Build Tools 36，移除重复工具安装和许可证处理。预装包依据 [GitHub Runner 官方清单](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)。这是 CI 配置修复，实际远端成功状态需以新运行结果为准，不以本地构建成功替代。
 
 最终交付 APK 的哈希以 `downloads/SHA256SUMS.txt` 为准。发布私钥与个人 SDK/代理配置均不提交。
+## 1.0.4 日轻接入验证（2026-11-17）
+
+- 调研对比见 `LIGHT-NOVEL-SOLUTIONS.md`；经独立复核修正了候选项目的语言、来源数量及中文 EPUB/机翻区分。没有将候选合集条数当作已验证可用数量。
+- 10 项定向 JVM 测试通过：DiscoveryLoaderTest 7 项、JapaneseSourceRuleTest 3 项，覆盖分组约束、章节行切片、插图与受限卷拒绝。未重跑与本次变化无关的全套测试。
+- `scripts/check-light-novel-api.py --proxy http://127.0.0.1:12450`：三本书各下载一卷，验证 EPUB 容器与正文文档。
+- `scripts/check-japanese-text-api.py --proxy http://127.0.0.1:12450`：《回复术士》《义妹生活》分别检查首、末卷 TXT 编码及所有文本章节边界；发现接口返回21本。中间卷册尚未逐章全文校对。
+- 正式构建 `:app:assembleAppRelease` 通过（3m52s），R8 与正式 lint 检查通过。包名 `com.zgozh.xiaoshuo`，版本1.0.4/code5，证书 SHA256 `e6dbd8aca496ad75c3b81a1ff7a957951d7da0ff6c2a8b45adf9324d0c9e5e03`。
+- MuMu 使用 `adb install -r` 覆盖1.0.3，原《执魔》及阅读位置保留。来源320→322，日轻组3条。后续重复覆盖同一未发布版本以验证规则修复，未卸载应用。
+- MuMu 新版原生搜索命中拷贝来源《回复术士的重启人生》/月夜泪；目录361项包含9个卷标题及章节/插图条目，第一卷显示39条；进入「第一话 少年作梦」正常显示正文，分页1/16。
+- Novelia EPUB 路径已实测：选择第一卷、下载5,276,341字节、导入28个目录项并打开正文。目录项计数与另一来源的章节/插图划分不同，不能直接据此断言缺章。
+- 搜索首页可选日本轻小说；原生发现列表加载1页/21本并以三列网格显示。
+- 网络限制：本机 Novelia、拷贝 API 直连失败，使用已有代理成功。MuMu 仅对新增两条来源设置测试代理，通过 ADB 端口转发访问主机现有代理；没有修改系统全局代理。发布规则不包含本机代理地址，其他设备需自行具备可访问来源的网络。
+- APK SHA256：`2d4f8975da00d2e9459814725407db9060d2d9b1f6cc02dd160f5de13da52893`。

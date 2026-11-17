@@ -9,6 +9,23 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class DiscoveryLoaderTest {
+    @Test fun japaneseTabOnlyUsesItsGroupAndJapaneseCategories() = runBlocking {
+        val visited = arrayListOf<String>()
+        val loader = DiscoveryLoader({ listOf(
+            ExploreKind("最高评分", "/list-03/1.html"),
+            ExploreKind("最高评分", "/list-13/1.html"),
+        ) }) { source, url ->
+            visited += "${source.bookSourceUrl}$url"
+            listOf(SearchBook(bookUrl = "a", name = "译作"))
+        }
+        val result = loader.load(discoveryTabs.first { it.id == "japanese" }, listOf(
+            BookSource(bookSourceUrl = "chinese"),
+            BookSource(bookSourceUrl = "https://www.esjzone.one", bookSourceGroup = "日本轻小说"),
+        ), null)
+        assertEquals("/list-13/1.html", result.section!!.categoryUrl)
+        assertEquals(listOf("https://www.esjzone.one/list-13/1.html"), visited)
+    }
+
     private val sources = listOf("empty", "broken", "healthy").map {
         BookSource(bookSourceUrl = it, bookSourceName = it)
     }
