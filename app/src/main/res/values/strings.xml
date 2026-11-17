@@ -8,9 +8,9 @@
     <string name="paragraph_image">Image %1$d</string>
     <string name="paragraph_read_menu">Reading menu</string>
     <!--App-->
-    <string name="app_name">勾彬小说</string>
-    <string name="app_name_a">勾彬小说</string>
-    <string name="app_name_s" translatable="false">勾彬小说</string>
+    <string name="app_name">狗明小说</string>
+    <string name="app_name_a">狗明小说</string>
+    <string name="app_name_s" translatable="false">狗明小说</string>
     <string name="receiving_shared_label">Legado·search</string>
     <string name="receiving_shared_import_label">Legado·import</string>
     <string name="tip_perm_request_storage">Legado needs storage access to find and read books. please go "App Settings" to allow "Storage permission".</string>
@@ -115,8 +115,8 @@
     <string name="offline_cache_t">Offline cache</string>
     <string name="offline_cache_s">cache the selected chapter(s) to Storage</string>
     <string name="change_origin">Change Origin</string>
-    <string name="about_description">勾彬小说基于 Legado 开源阅读器二次开发，保留 GPL-3.0 许可与上游贡献者信息。无广告，支持聚合搜索、书源管理和本地阅读。</string>
-    <string name="app_share_description">勾彬小说：\nhttps://github.com/zgozh/xiao-shuo</string>
+    <string name="about_description">狗明小说基于 Legado 开源阅读器二次开发，保留 GPL-3.0 许可与上游贡献者信息。无广告，支持聚合搜索、书源管理和本地阅读。</string>
+    <string name="app_share_description">狗明小说：\nhttps://github.com/zgozh/xiao-shuo</string>
     <string name="version_name">Version %s</string>
     <string name="pt_background_verification">Background-verification</string>
     <string name="ps_background_verification">you can operate freely when verifying the book source</string>

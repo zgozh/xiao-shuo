@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--App-->
-    <string name="app_name">勾彬小说</string>
-    <string name="app_name_a">勾彬小说</string>
+    <string name="app_name">狗明小说</string>
+    <string name="app_name_a">狗明小说</string>
     <string name="receiving_shared_label">Legado·Tìm kiếm</string>
     <string name="receiving_shared_import_label">Legado·Nhập</string>
     <string name="tip_perm_request_storage">Legado cần quyền truy cập bộ nhớ để tìm và đọc sách. Vui lòng vào "Cài đặt ứng dụng" để cấp "Quyền truy cập bộ nhớ".</string>
@@ -97,8 +97,8 @@
     <string name="offline_cache_t">Bộ đệm ngoại tuyến</string>
     <string name="offline_cache_s">Lưu trữ các chương đã chọn vào bộ nhớ đệm</string>
     <string name="change_origin">Đổi nguồn</string>
-    <string name="about_description">勾彬小说基于 Legado 开源阅读器二次开发，保留 GPL-3.0 许可与上游贡献者信息。无广告，支持聚合搜索、书源管理和本地阅读。</string>
-    <string name="app_share_description">勾彬小说：\nhttps://github.com/zgozh/xiao-shuo</string>
+    <string name="about_description">狗明小说基于 Legado 开源阅读器二次开发，保留 GPL-3.0 许可与上游贡献者信息。无广告，支持聚合搜索、书源管理和本地阅读。</string>
+    <string name="app_share_description">狗明小说：\nhttps://github.com/zgozh/xiao-shuo</string>
     <string name="version_name">Phiên bản %s</string>
     <string name="pt_background_verification">Xác minh trong nền</string>
     <string name="ps_background_verification">Bạn có thể thao tác tự do khi đang xác minh nguồn sách</string>

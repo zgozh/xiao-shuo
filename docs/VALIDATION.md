@@ -1,5 +1,13 @@
 # 验证记录
 
+## 1.0.5 狗明小说改名与打包（2026-11-17）
+
+- 主会话直接完成名称资源与发布元数据修改；当前会话限制未明确要求的实现委派。
+- 正式构建 `:app:assembleAppRelease` 通过（5m59s），含 R8 和正式 lint 检查。仅名称资源及发布元数据变化，没有重复运行小说检索与阅读测试。
+- `aapt2 dump badging` 验证默认及各语言应用名均为“狗明小说”，包名 `com.zgozh.xiaoshuo`，版本1.0.5/code6。
+- `apksigner verify --print-certs` 通过，证书SHA256沿用 `e6dbd8aca496ad75c3b81a1ff7a957951d7da0ff6c2a8b45adf9324d0c9e5e03`，支持覆盖旧版本。本轮未操作MuMu。
+- 产物 `downloads/gouming_1.0.5.apk`，27,012,616字节，SHA256 `4ee2a7473f3686879c800cbe70bc184074135639d11c869b5c3617649424249c`。本轮构建的Gradle、Kotlin Java后台进程已关闭。
+
 2026-11-17 补充：[11部热门日轻卷册覆盖核查](LIGHT-NOVEL-COVERAGE-2026-11-17.md)。至少4部相对已核实日文出版基准未齐；23次首末卷TXT结构检查通过，但两份Re:0第44卷EPUB未通过ZIP检查。此次不修改或重打包App，详细元数据快照见报告。
 
 ## 1.0.3 中途改词后的列表积压修复（2026-11-15）

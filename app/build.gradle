@@ -30,9 +30,9 @@ static def releaseTime() {
     return new Date().format("yyMMddHH", TimeZone.getTimeZone("GMT+8"))
 }
 
-def name = "goubin"
-def version = "1.0.4"
-def versionCodeValue = 5
+def name = "gouming"
+def version = "1.0.5"
+def versionCodeValue = 6
 def armOnly = project.findProperty("armOnly")?.toBoolean() ?: false
 
 android {

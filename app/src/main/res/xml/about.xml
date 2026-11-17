@@ -4,7 +4,7 @@
 
     <io.legado.app.lib.prefs.Preference
         android:key="goubinProject"
-        android:title="勾彬小说项目与反馈"
+        android:title="狗明小说项目与反馈"
         android:summary="基于 Legado 二次开发 · GPL-3.0 · 无广告"
         app:iconSpaceReserved="false" />
 
