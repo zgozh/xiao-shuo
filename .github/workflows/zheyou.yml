@@ -24,7 +24,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x gradlew
       - run: ./gradlew :app:assembleAppDebug :app:testAppDebugUnitTest --tests '*JapaneseSourceRuleTest' --tests '*Discovery*Test' --tests '*SearchResultMergerTest' --tests '*SearchResultDiffCallbackTest' --tests '*ContentQualityTest' --tests '*SourceRepositoryTest' --tests '*SourceRecommendationTest' --tests '*ReaderPresetsTest' --tests '*SearchProgressReporterTest' --tests '*SearchPaginationContractTest' --tests '*SearchCommandGateTest' --tests '*ReadStyleLineSpacingTest' --tests '*ChangeSource*Test' --tests '*SourceNavigationPolicyTest'
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: zheyou-debug
           path: app/build/outputs/apk/app/debug/*.apk
