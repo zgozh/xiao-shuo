@@ -1,0 +1,38 @@
+[
+  {
+    "bookSourceUrl": "https://n.novelia.cc",
+    "bookSourceName": "Novelia 文库（分卷EPUB）",
+    "bookSourceGroup": "日本轻小说,轻小说译本,分卷EPUB",
+    "bookSourceType": 3,
+    "enabled": true,
+    "enabledExplore": true,
+    "enabledCookieJar": true,
+    "concurrentRate": "1/1000",
+    "bookSourceComment": "柘栯小说适配；接口参考 https://github.com/auto-novel/auto-novel （GPL-3.0）。按卷下载EPUB后使用本地阅读器。中文译本与机器翻译请按卷名区分；本规则只列出网站公开提供的中文EPUB，不生成机翻，不提供受限内容解锁。网站可用性和收录会变化。",
+    "searchUrl": "/api/wenku?page={{page-1}}&pageSize=20&query={{key}}&level=0",
+    "exploreUrl": "[{\"title\":\"最新文库\",\"url\":\"/api/wenku?page={{page-1}}&pageSize=20&level=0\"}]",
+    "ruleSearch": {
+      "bookList": "$.items[*]",
+      "name": "$.titleZh",
+      "bookUrl": "https://n.novelia.cc/api/wenku/{{$.id}}",
+      "coverUrl": "$.cover",
+      "kind": "日本轻小说,分卷EPUB",
+      "intro": "日文原名：{{$.title}}。按卷下载EPUB阅读，是否提供中文卷册以详情为准。"
+    },
+    "ruleExplore": {
+      "bookList": "$.items[*]",
+      "name": "$.titleZh",
+      "bookUrl": "https://n.novelia.cc/api/wenku/{{$.id}}",
+      "coverUrl": "$.cover",
+      "kind": "日本轻小说,分卷EPUB"
+    },
+    "ruleBookInfo": {
+      "name": "$.titleZh",
+      "author": "$.authors[*]",
+      "coverUrl": "$.cover",
+      "intro": "@js:var d=JSON.parse(result); d.introduction+String.fromCharCode(10)+'可下载中文 EPUB：'+(d.volumeZh || []).length+' 卷；书目所列卷册：'+(d.volumes || []).length+' 卷。数量不代表逐章完整性验证。';",
+      "kind": "$.keywords[*]",
+      "downloadUrls": "@js:var data=JSON.parse(result); var id=baseUrl.split('/').pop(); (data.volumeZh || []).slice().sort().map(function(v){ return 'https://n.novelia.cc/files-wenku/'+id+'/'+v; }).join(String.fromCharCode(10));"
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "bookSourceName": "拷贝轻小说[Yolo]",
+    "bookSourceUrl": "https://www.mangacopy.com",
+    "bookSourceGroup": "日本轻小说,轻小说译本",
+    "bookSourceType": 0,
+    "enabled": true,
+    "enabledExplore": true,
+    "concurrentRate": "1/500",
+    "bookSourceComment": "来源：yolo52/Yuedu 轻小说.json，GPL-3.0，https://github.com/yolo52/Yuedu 。柘栯适配：修正搜索翻页；按站点卷册与章节行号生成目录；缓存分卷文本并保留插图。无账号、付费或验证码解锁。来源收录及卷册数量不代表全本完整性保证。",
+    "searchUrl": "https://api.mangacopy.com/api/v3/search/books?limit=20&offset={{(page-1)*20}}&q_type=&q={{key}}&_update=true",
+    "exploreUrl": "[{\"title\":\"最新日轻\",\"url\":\"https://api.mangacopy.com/api/v3/books?ordering=-datetime_updated&limit=21&offset={{(page-1)*21}}&free_type=1&_update=true\"}]",
+    "ruleSearch": {
+      "bookList": "$.results.list[*]",
+      "name": "$.name@js:java.t2s(result)",
+      "author": "$.author..name@js:java.t2s(result)",
+      "bookUrl": "https://api.mangacopy.com/api/v3/book/{{$.path_word}}?_update=true",
+      "coverUrl": "$.cover"
+    },
+    "ruleExplore": {},
+    "ruleBookInfo": {
+      "init": "$.results.book",
+      "name": "$.name@js:java.t2s(result)",
+      "author": "$.author..name@js:java.t2s(result)",
+      "coverUrl": "$.cover",
+      "intro": "$.brief",
+      "kind": "$.theme..name",
+      "lastChapter": "$.last_chapter..name",
+      "tocUrl": "https://api.mangacopy.com/api/v3/book/{{$.path_word}}/volumes?_update=true"
+    },
+    "ruleToc": {
+      "chapterList": "@js:(function(){var data=JSON.parse(result); if(data.code!==200 || !data.results) throw new Error('卷目录请求失败'); var out=[]; data.results.list.forEach(function(v){var url='https://api.mangacopy.com/api/v3/book/'+v.book_path_word+'/volume/'+v.id+'?_update=true'; var r=JSON.parse(java.ajax(url)); if(r.code!==200 || !r.results || r.results.is_lock || !r.results.volume) throw new Error('卷册不可用：'+v.name); var entries=r.results.volume.contents; if(!entries || !entries.length) throw new Error('卷册目录为空：'+v.name); out.push({name:v.name,url:url,volume:true}); entries.forEach(function(c,i){out.push({name:c.name,url:url+'&part='+i,volume:false});});}); return out;})()",
+      "chapterName": "$.name",
+      "chapterUrl": "$.url",
+      "isVolume": "$.volume"
+    },
+    "ruleContent": {
+      "content": "@js:(function(){var r=JSON.parse(result); if(r.code!==200 || !r.results || r.results.is_lock || !r.results.volume) throw new Error('卷册不可用'); var v=r.results.volume; var match=String(baseUrl).match(/[?&]part=(\\d+)/); if(!match) throw new Error('章节位置缺失'); var c=v.contents[Number(match[1])]; if(!c) throw new Error('章节不存在'); if(c.content_type===1){if(!v.txt_addr) throw new Error('正文地址缺失'); var text=String(java.cacheFile(v.txt_addr,86400)); var lines=text.split(/\\r?\\n/); if(c.start_lines<0 || c.end_lines>lines.length || c.end_lines<=c.start_lines) throw new Error('章节边界异常'); return lines.slice(c.start_lines,c.end_lines).join(String.fromCharCode(10));} if(c.content_type===2 && /^https?:/.test(c.content || '')) return '<img src=\"'+c.content+'\">'; throw new Error('不支持的章节类型');})()"
+    }
+  }
+]
