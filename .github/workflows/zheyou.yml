@@ -21,7 +21,7 @@ jobs:
           test -f "$ANDROID_HOME/platforms/android-36/android.jar"
           test -x "$ANDROID_HOME/build-tools/36.0.0/aapt2"
           printf 'Using preinstalled Android SDK: %s\n' "$ANDROID_HOME"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - run: chmod +x gradlew
       - run: ./gradlew :app:assembleAppDebug :app:testAppDebugUnitTest --tests '*JapaneseSourceRuleTest' --tests '*Discovery*Test' --tests '*SearchResultMergerTest' --tests '*SearchResultDiffCallbackTest' --tests '*ContentQualityTest' --tests '*SourceRepositoryTest' --tests '*SourceRecommendationTest' --tests '*ReaderPresetsTest' --tests '*SearchProgressReporterTest' --tests '*SearchPaginationContractTest' --tests '*SearchCommandGateTest' --tests '*ReadStyleLineSpacingTest' --tests '*ChangeSource*Test' --tests '*SourceNavigationPolicyTest'
       - uses: actions/upload-artifact@v4
@@ -45,7 +45,7 @@ jobs:
           test -f "$ANDROID_HOME/platforms/android-36/android.jar"
           test -x "$ANDROID_HOME/build-tools/36.0.0/aapt2"
           printf 'Using preinstalled Android SDK: %s\n' "$ANDROID_HOME"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - name: Build signed APK
         env:
           RELEASE_KEY_STORE: ${{ secrets.RELEASE_KEY_STORE }}
