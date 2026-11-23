@@ -1,4 +1,4 @@
-# 勾彬小说：日轻开源方案调研
+# 柘栯小说：日轻开源方案调研
 
 Research date: 2026-11-17
 
@@ -82,7 +82,7 @@ No restricted page was bypassed and no novel正文 was copied into this report. 
 
 One exception to the mostly failed host checks is the Mangacopy rule in Yolo's set. In the supplied live test, anonymous search for the full title 回复术士的重启人生 returned one exact title match, detail identified 月夜淚, and the volume listing contained nine volumes. The first volume endpoint reported no login/VIP lock; its UTF-8 text response was 329,063 bytes with 121,383 characters and no replacement characters. Its chapter line ranges and image markers give the importer usable boundaries. This makes Mangacopy the first sensible additional source to evaluate in-app, while limiting the claim to this work's first volume; do not infer all-volume completeness or permission to redistribute its text. The tested [search endpoint](https://api.mangacopy.com/api/v3/search/books?limit=20&offset=0&q=%E5%9B%9E%E5%A4%8D%E6%9C%AF%E5%A3%AB%E7%9A%84%E9%87%8D%E5%90%AF%E4%BA%BA%E7%94%9F&_update=true), [book endpoint](https://api.mangacopy.com/api/v3/book/huifushushidechongqirensheng), and [volume-list endpoint](https://api.mangacopy.com/api/v3/book/huifushushidechongqirensheng/volumes) are examples of the current API surface, not a published stability promise.
 
-[jiwangyihao/source-j-legado](https://github.com/jiwangyihao/source-j-legado) is among the most focused current Legado rule sets. Its repository license is marked MPL-2.0, but complete source files include an extra author statement asking users to open an issue and receive approval before reposting or adapting a complete source, and forbidding repackaging the complete set into a general-purpose book-source collection. This report therefore treats it as a source of examples and a user-import option, not material to bundle into 勾彬小说 by default.
+[jiwangyihao/source-j-legado](https://github.com/jiwangyihao/source-j-legado) is among the most focused current Legado rule sets. Its repository license is marked MPL-2.0, but complete source files include an extra author statement asking users to open an issue and receive approval before reposting or adapting a complete source, and forbidding repackaging the complete set into a general-purpose book-source collection. This report therefore treats it as a source of examples and a user-import option, not material to bundle into 柘栯小说 by default.
 
 ### Crawler and EPUB options
 

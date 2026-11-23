@@ -27,7 +27,7 @@ import java.io.File
 @RunWith(AndroidJUnit4::class)
 class DiscoveryLiveProbeTest {
     @Test fun probeCurrentDiscoverySources() = runBlocking {
-        assumeTrue(InstrumentationRegistry.getArguments().getString("goubinDiscoveryProbe") == "1")
+        assumeTrue(InstrumentationRegistry.getArguments().getString("zheyouDiscoveryProbe") == "1")
         val output = File(InstrumentationRegistry.getInstrumentation().targetContext.getExternalFilesDir(null), "discovery-probe.json")
         val reports = mutableListOf<Map<String, Any>>()
         val lock = Mutex()
@@ -59,7 +59,7 @@ class DiscoveryLiveProbeTest {
                 lock.withLock {
                     reports += report
                     output.writeText(GSON.toJson(reports))
-                    Log.i("GoubinDiscoveryProbe", "${source.bookSourceName}: ${sections.map { it["count"] }}")
+                    Log.i("ZheyouDiscoveryProbe", "${source.bookSourceName}: ${sections.map { it["count"] }}")
                 }
             }
         } }.awaitAll()

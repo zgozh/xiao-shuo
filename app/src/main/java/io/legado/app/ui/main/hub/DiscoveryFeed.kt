@@ -170,14 +170,14 @@ internal class DiscoveryLoader(
 }
 
 internal class DiscoveryCache(private val context: Context) {
-    private val file get() = AtomicFile(File(context.filesDir, "goubin-discovery.json"))
+    private val file get() = AtomicFile(File(context.filesDir, "zheyou-discovery.json"))
 
     fun read(): List<DiscoverySection> {
         val snapshot = runCatching {
             GSON.fromJsonArray<DiscoverySection>(file.openRead().bufferedReader().use { it.readText() }).getOrThrow()
         }.getOrDefault(emptyList())
         val bundled = runCatching {
-            context.assets.open("defaultData/goubinDiscovery.json").bufferedReader().use {
+            context.assets.open("defaultData/zheyouDiscovery.json").bufferedReader().use {
                 GSON.fromJsonArray<DiscoverySection>(it.readText()).getOrThrow()
             }
         }.getOrDefault(emptyList())

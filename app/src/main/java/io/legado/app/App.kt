@@ -103,7 +103,7 @@ class App : Application() {
                 .autoClear(false)
                 .enableLogger(BuildConfig.DEBUG || AppConfig.recordLog)
                 .setLogger(EventLogger())
-            DefaultData.installGoubinSources()
+            DefaultData.installZheyouSources()
             DefaultData.upVersion()
             AppFreezeMonitor.init(this@App)
             DispatchersMonitor.init()

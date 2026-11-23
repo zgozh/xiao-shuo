@@ -2,8 +2,8 @@
   "version": 1,
   "repositories": [
     {
-      "name": "勾彬 · 中文小说补充候选",
-      "url": "https://raw.githubusercontent.com/zgozh/xiao-shuo/main/app/src/main/assets/defaultData/goubinCommunitySources.json",
+      "name": "柘栯 · 中文小说补充候选",
+      "url": "https://raw.githubusercontent.com/zgozh/xiao-shuo/main/app/src/main/assets/defaultData/zheyouCommunitySources.json",
       "homepage": "https://github.com/shidahuilang/shuyuan-bak",
       "description": "从大型社区集合筛选的 300 条中文文字小说规则，按主机去重；候选不代表当前检测通过，请按实际搜索与正文结果选择。"
     },

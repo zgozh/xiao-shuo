@@ -45,7 +45,7 @@ for source in sorted(records, key=updated, reverse=True):
         continue
     if not rule(source, "ruleToc").get("chapterList") or not rule(source, "ruleContent").get("content"):
         continue
-    source["bookSourceGroup"] = "勾彬·社区候选," + (source.get("bookSourceGroup") or "")
+    source["bookSourceGroup"] = "柘栯·社区候选," + (source.get("bookSourceGroup") or "")
     source["customOrder"] = 100 + len(selected)
     selected.append(source)
     hosts.add(host)
@@ -53,7 +53,7 @@ for source in sorted(records, key=updated, reverse=True):
         break
 
 project = Path(__file__).resolve().parent.parent
-output = project / "app/src/main/assets/defaultData/goubinCommunitySources.json"
+output = project / "app/src/main/assets/defaultData/zheyouCommunitySources.json"
 output.write_text(json.dumps(selected, ensure_ascii=False, indent=2), encoding="utf-8")
 manifest = {
     "upstream": "https://raw.githubusercontent.com/shidahuilang/shuyuan-bak/main/good.json",

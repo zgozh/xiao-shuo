@@ -2,7 +2,7 @@
   "date": "2026-11-17",
   "sources": [
     {
-      "asset": "goubinJapaneseTextSources.json",
+      "asset": "zheyouJapaneseTextSources.json",
       "upstream": "https://github.com/yolo52/Yuedu/blob/main/轻小说.json",
       "name": "拷贝轻小说[Yolo]",
       "license": "GPL-3.0",
@@ -10,7 +10,7 @@
       "changes": "search pagination, simplified search labels, per-volume chapter boundaries, illustrations, cached volume text, fail on missing/locked volumes"
     },
     {
-      "asset": "goubinLightNovelSources.json",
+      "asset": "zheyouLightNovelSources.json",
       "implementation": "Original Legado rule for the public Novelia Wenku catalog and Chinese EPUB downloads",
       "reference": "https://github.com/auto-novel/auto-novel",
       "license": "GPL-3.0"

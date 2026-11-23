@@ -48,7 +48,7 @@ class AboutFragment : PreferenceFragmentCompat() {
 
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
         when (preference.key) {
-            "goubinProject" -> requireContext().openUrl("https://github.com/zgozh/xiao-shuo")
+            "zheyouProject" -> requireContext().openUrl("https://github.com/zgozh/xiao-shuo")
             "contributors" -> openUrl(R.string.contributors_url)
             "update_log" -> showMdFile(getString(R.string.update_log), "updateLog.md")
             "check_update" -> checkAppUpdate()

@@ -13,7 +13,7 @@ class JapaneseSourceRuleTest {
     }
 
     private fun content(part: Int, locked: Boolean = false): String {
-        val source = JsonParser.parseString(File("src/main/assets/defaultData/goubinJapaneseTextSources.json").readText())
+        val source = JsonParser.parseString(File("src/main/assets/defaultData/zheyouJapaneseTextSources.json").readText())
             .asJsonArray[0].asJsonObject
         val script = source["ruleContent"].asJsonObject["content"].asString.removePrefix("@js:")
         val context = Context.enter()

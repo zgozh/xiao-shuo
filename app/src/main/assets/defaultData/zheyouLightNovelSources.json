@@ -8,7 +8,7 @@
     "enabledExplore": true,
     "enabledCookieJar": true,
     "concurrentRate": "1/1000",
-    "bookSourceComment": "勾彬小说适配；接口参考 https://github.com/auto-novel/auto-novel （GPL-3.0）。按卷下载EPUB后使用本地阅读器。中文译本与机器翻译请按卷名区分；本规则只列出网站公开提供的中文EPUB，不生成机翻，不提供受限内容解锁。网站可用性和收录会变化。",
+    "bookSourceComment": "柘栯小说适配；接口参考 https://github.com/auto-novel/auto-novel （GPL-3.0）。按卷下载EPUB后使用本地阅读器。中文译本与机器翻译请按卷名区分；本规则只列出网站公开提供的中文EPUB，不生成机翻，不提供受限内容解锁。网站可用性和收录会变化。",
     "searchUrl": "/api/wenku?page={{page-1}}&pageSize=20&query={{key}}&level=0",
     "exploreUrl": "[{\"title\":\"最新文库\",\"url\":\"/api/wenku?page={{page-1}}&pageSize=20&level=0\"}]",
     "ruleSearch": {

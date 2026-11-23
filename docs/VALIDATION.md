@@ -1,12 +1,22 @@
 # 验证记录
 
-## 1.0.5 狗明小说改名与打包（2026-11-17）
+## 1.0.6 柘栯小说统一品牌（2026-11-23）
+
+- 当前源码、文档、资源及文件名的旧品牌扫描无匹配；包名与原签名证书保持兼容。旧证书身份不重新签发。
+- 正式构建与定向测试命令：`:app:testAppDebugUnitTest --tests '*JapaneseSourceRuleTest' --tests '*Discovery*Test' :app:assembleAppRelease`，6m50s成功，含R8及release lint；20项测试全部通过。未操作MuMu，未继续轻小说网络问题。
+- `aapt2 dump badging`：默认及全部语言应用名均为“柘栯小说”，包名 `com.zgozh.xiaoshuo`，1.0.6/code7。
+- `apksigner verify --print-certs`通过，证书SHA256仍为 `e6dbd8aca496ad75c3b81a1ff7a957951d7da0ff6c2a8b45adf9324d0c9e5e03`，支持覆盖安装。
+- `downloads/zheyou_1.0.6.apk`：27,012,589字节，SHA256 `84378ace97387a600f9ee27b9f37696e51e42b2df364c91d7c5397575c07cd9b`。当前下载清单只包含该版本；历史Git提交保留。
+- 资源XML、内置JSON、目录镜像、相关Python脚本语法及工作流YAML检查通过。新版初始化标记对旧code5/6直接延续，保留用户已删除的来源；已有书库、书源规则和阅读设置不重置。
+- 主会话直接执行：本会话禁止未明确要求的子代理委派。受影响diff已检查，构建Java进程在打包后关闭。
+
+## 1.0.5 历史改名与打包（2026-11-17）
 
 - 主会话直接完成名称资源与发布元数据修改；当前会话限制未明确要求的实现委派。
 - 正式构建 `:app:assembleAppRelease` 通过（5m59s），含 R8 和正式 lint 检查。仅名称资源及发布元数据变化，没有重复运行小说检索与阅读测试。
-- `aapt2 dump badging` 验证默认及各语言应用名均为“狗明小说”，包名 `com.zgozh.xiaoshuo`，版本1.0.5/code6。
+- `aapt2 dump badging` 验证默认及各语言应用名均为当时名称，包名 `com.zgozh.xiaoshuo`，版本1.0.5/code6。
 - `apksigner verify --print-certs` 通过，证书SHA256沿用 `e6dbd8aca496ad75c3b81a1ff7a957951d7da0ff6c2a8b45adf9324d0c9e5e03`，支持覆盖旧版本。本轮未操作MuMu。
-- 产物 `downloads/gouming_1.0.5.apk`，27,012,616字节，SHA256 `4ee2a7473f3686879c800cbe70bc184074135639d11c869b5c3617649424249c`。本轮构建的Gradle、Kotlin Java后台进程已关闭。
+- 产物 历史 1.0.5 APK（当前下载目录不再保留），27,012,616字节，SHA256 `4ee2a7473f3686879c800cbe70bc184074135639d11c869b5c3617649424249c`。本轮构建的Gradle、Kotlin Java后台进程已关闭。
 
 2026-11-17 补充：[11部热门日轻卷册覆盖核查](LIGHT-NOVEL-COVERAGE-2026-11-17.md)。至少4部相对已核实日文出版基准未齐；23次首末卷TXT结构检查通过，但两份Re:0第44卷EPUB未通过ZIP检查。此次不修改或重打包App，详细元数据快照见报告。
 
@@ -30,7 +40,7 @@
 - 第一轮完成 310/310，合并 883 / 列表 883 / 已绑定 883。
 - 关闭诊断、返回、重新打开搜索，不重启进程（PID 13895 保持不变，启动为 WARM）：完成 310/310，合并 907 / 列表 907 / 已绑定 907。首项为《万古神帝》/飞天鱼，来源徽标 55。
 - 两轮请求数据量受来源响应影响，各轮内部的合并、显示与绑定条数一致；不把两轮总量差异当作漏书。
-- APK SHA-256：`36cbf594e5ef2876936f5b16d7acd6dd2bf829daa8f77506ae41a8fc269128cb`；文件为 `downloads/goubin_1.0.3.apk`。工作流 YAML 解析通过，远端 Actions 结果另行确认。
+- APK SHA-256：`36cbf594e5ef2876936f5b16d7acd6dd2bf829daa8f77506ae41a8fc269128cb`；文件为 历史 1.0.3 APK（当前下载目录不再保留）。工作流 YAML 解析通过，远端 Actions 结果另行确认。
 - 临时设备测试 JAR/脚本已清理，构建用 Gradle/Kotlin Java 守护进程已关闭，应用保留在新版本的搜索结果页供人工查看。
 
 本轮由主会话直接实现、审阅和验收，遵循会话禁止自动委派实现任务的限制。复现及诊断原始输出保存在忽略目录 `artifacts/` 和本机日志中。
@@ -41,7 +51,7 @@
 
 数据流检查：发现回退 6 项、发现状态与分页 7 项、匿名访客会话 3 项、搜索合并 7 项通过（共 23 项）。此前本轮已通过的搜索分页合同 3 项、进度报告 4 项、命令控制 1 项仍适用；未运行全仓库测试。合并结果发布前保留协程取消检查，避免旧搜索完成排序后污染新搜索。
 
-最终 `:app:testAppDebugUnitTest --tests '*SearchResultMergerTest' :app:assembleAppRelease` 成功，包含针对取消检查调整后的 7 项合并测试、R8 及 release lint vital。`apksigner verify --print-certs` 通过，签名证书 SHA-256 与 1.0.0 一致；`aapt2 dump badging` 确认包名 `com.zgozh.xiaoshuo`、应用名“勾彬小说”、versionName 1.0.2 / versionCode 3。下载文件为 `downloads/goubin_1.0.2.apk`，SHA-256 为 `0980e9bf848400192768614e8205ceb6f55a0263295427af528f8c1d5558f7ab`。暂停前的 1.0.1 本机包存于忽略目录 `artifacts/`，没有作为新版发布。
+最终 `:app:testAppDebugUnitTest --tests '*SearchResultMergerTest' :app:assembleAppRelease` 成功，包含针对取消检查调整后的 7 项合并测试、R8 及 release lint vital。`apksigner verify --print-certs` 通过，签名证书 SHA-256 与 1.0.0 一致；`aapt2 dump badging` 确认包名 `com.zgozh.xiaoshuo`、应用名“柘栯小说”、versionName 1.0.2 / versionCode 3。下载文件为 历史 1.0.2 APK（当前下载目录不再保留），SHA-256 为 `0980e9bf848400192768614e8205ceb6f55a0263295427af528f8c1d5558f7ab`。暂停前的 1.0.1 本机包存于忽略目录 `artifacts/`，没有作为新版发布。
 
 HTTP 检查命令：`python scripts/check-discovery-api.py`（Python 依赖 requests、beautifulsoup4）。脚本从内置规则中读取地址和数据形状，默认直连，可用 `--proxy` 显式指定代理；它不执行完整 Android 规则引擎。报告默认写入忽略目录 `artifacts/discovery-api-report.json`，请求在 2026-11-14 进行了实际网络访问。
 
@@ -72,7 +82,7 @@ HTTP 检查命令：`python scripts/check-discovery-api.py`（Python 依赖 requ
 - MuMu API 32 实测：精选首屏三列六本封面；热门、新书与更新、完结三个分区分别返回并缓存 20 本。
 - 热门榜完整网格第一页 20 本，点击加载下一页后 40 本；进入《神宠供应商》详情后可查看目录并渲染第一章正文。
 - 玄幻分类实测返回 10 本并写入缓存。
-- 初始快照通过原生发现规则实测获取，共 18 本元数据，注明来源与时间；不是预设热度或正文副本。独立手动探测用例 `DiscoveryLiveProbeTest` 需显式参数 `goubinDiscoveryProbe=1`，常规测试不会访问外站。
+- 初始快照通过原生发现规则实测获取，共 18 本元数据，注明来源与时间；不是预设热度或正文副本。独立手动探测用例 `DiscoveryLiveProbeTest` 需显式参数 `zheyouDiscoveryProbe=1`，常规测试不会访问外站。
 - 工作流 YAML 解析通过，加入发现回退测试并指向 1.0.1 的本机签名 APK；远端 Actions 状态未据此推断成功。
 
 断网冷启动检查中，关闭 MuMu WiFi 后 ADB 端口连接中断；该轮未取得有效离线界面证据，不计为通过。已保留已有的联网浏览、缓存文件和针对性测试证据。
@@ -86,7 +96,7 @@ HTTP 检查命令：`python scripts/check-discovery-api.py`（Python 依赖 requ
 - 调试 APK 和启用压缩/混淆的正式签名 APK 均已构建成功；正式构建包含 Gradle 的 release lint vital 检查。
 - 运行范围为正文质量、目录解析、模板可读性、来源推荐、搜索进度/分页/命令隔离、行距、换源操作/生命周期/结果策略以及来源导航策略，共 59 个定向测试。
 - 首轮 59 项中有一项旧断言要求缓存命中后不重新搜索，与用户确认的新换源行为冲突；更新该断言，验证“保留缓存并主动刷新”，随后对应 5 项测试复验通过。其余 58 项通过的证据仍有效；未运行全部仓库测试。
-- 使用 Android apksigner 检查正式包：v2/v3 签名通过，RSA 3072，证书为 `CN=Goubin Novel, O=zgozh`。证书 SHA-256：`e6dbd8aca496ad75c3b81a1ff7a957951d7da0ff6c2a8b45adf9324d0c9e5e03`。
+- 使用 Android apksigner 检查正式包：v2/v3 签名通过，RSA 3072，证书沿用首次发布身份（未重新签发）。证书 SHA-256：`e6dbd8aca496ad75c3b81a1ff7a957951d7da0ff6c2a8b45adf9324d0c9e5e03`。
 
 ## 模拟器实测
 

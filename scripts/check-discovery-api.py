@@ -23,7 +23,7 @@ DATA = ROOT / "app/src/main/assets/defaultData"
 
 def source_rules():
     sources = {}
-    for name in ("goubinSources.json", "goubinCommunitySources.json"):
+    for name in ("zheyouSources.json", "zheyouCommunitySources.json"):
         for source in json.loads((DATA / name).read_text(encoding="utf-8")):
             sources[source["bookSourceUrl"]] = source
     return sources

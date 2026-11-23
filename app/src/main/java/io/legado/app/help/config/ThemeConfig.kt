@@ -319,13 +319,13 @@ object ThemeConfig {
 
     private fun getDayTheme(context: Context, name: String): Config {
         val primary =
-            context.getPrefInt(PreferKey.cPrimary, context.getCompatColor(R.color.goubin_primary))
+            context.getPrefInt(PreferKey.cPrimary, context.getCompatColor(R.color.zheyou_primary))
         val accent =
-            context.getPrefInt(PreferKey.cAccent, context.getCompatColor(R.color.goubin_accent))
+            context.getPrefInt(PreferKey.cAccent, context.getCompatColor(R.color.zheyou_accent))
         val background =
-            context.getPrefInt(PreferKey.cBackground, context.getCompatColor(R.color.goubin_paper))
+            context.getPrefInt(PreferKey.cBackground, context.getCompatColor(R.color.zheyou_paper))
         val bBackground =
-            context.getPrefInt(PreferKey.cBBackground, context.getCompatColor(R.color.goubin_surface))
+            context.getPrefInt(PreferKey.cBBackground, context.getCompatColor(R.color.zheyou_surface))
         val transparentNavBar =
             context.getPrefBoolean(PreferKey.tNavBar, false)
         val bgImgPath =
@@ -431,17 +431,17 @@ object ThemeConfig {
 
             else -> {
                 val primary =
-                    getPrefInt(PreferKey.cPrimary, getCompatColor(R.color.goubin_primary))
+                    getPrefInt(PreferKey.cPrimary, getCompatColor(R.color.zheyou_primary))
                 val accent =
-                    getPrefInt(PreferKey.cAccent, getCompatColor(R.color.goubin_accent))
+                    getPrefInt(PreferKey.cAccent, getCompatColor(R.color.zheyou_accent))
                 var background =
-                    getPrefInt(PreferKey.cBackground, getCompatColor(R.color.goubin_paper))
+                    getPrefInt(PreferKey.cBackground, getCompatColor(R.color.zheyou_paper))
                 if (!ColorUtils.isColorLight(background)) {
-                    background = getCompatColor(R.color.goubin_paper)
+                    background = getCompatColor(R.color.zheyou_paper)
                     putPrefInt(PreferKey.cBackground, background)
                 }
                 val bBackground =
-                    getPrefInt(PreferKey.cBBackground, getCompatColor(R.color.goubin_surface))
+                    getPrefInt(PreferKey.cBBackground, getCompatColor(R.color.zheyou_surface))
                 val transparentNavBar =
                     getPrefBoolean(PreferKey.tNavBar, false)
                 ThemeStore.editTheme(this)

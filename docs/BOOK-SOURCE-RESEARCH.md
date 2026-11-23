@@ -16,7 +16,7 @@
 
 ## 当前扩充
 
-从 `good.json` 选择 300 条候选，保存在 `app/src/main/assets/defaultData/goubinCommunitySources.json`。原始来源、下载时间与 SHA-256 记录在 `sources/community-manifest.json`，许可文本在 `sources/SHIDAHUILANG-LICENSE`。
+从 `good.json` 选择 300 条候选，保存在 `app/src/main/assets/defaultData/zheyouCommunitySources.json`。原始来源、下载时间与 SHA-256 记录在 `sources/community-manifest.json`，许可文本在 `sources/SHIDAHUILANG-LICENSE`。
 
 筛选排除明显的非中文文字小说类型，要求存在搜索、目录和正文规则，并按去掉 www/m/wap 前缀后的主机去重。异常未来时间戳不作为新规则排序依据。保留原作者注释与启停信息，不覆盖用户已编辑的同地址规则。
 

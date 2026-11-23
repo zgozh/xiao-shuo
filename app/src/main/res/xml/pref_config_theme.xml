@@ -98,7 +98,7 @@
         app:layout="@layout/view_preference_category">
 
         <io.legado.app.lib.prefs.ColorPreference
-            android:defaultValue="@color/goubin_primary"
+            android:defaultValue="@color/zheyou_primary"
             android:key="colorPrimary"
             android:summary="@string/day_color_primary"
             android:title="@string/primary"
@@ -106,7 +106,7 @@
             app:iconSpaceReserved="false" />
 
         <io.legado.app.lib.prefs.ColorPreference
-            android:defaultValue="@color/goubin_accent"
+            android:defaultValue="@color/zheyou_accent"
             android:key="colorAccent"
             android:summary="@string/day_color_accent"
             android:title="@string/accent"
@@ -114,7 +114,7 @@
             app:iconSpaceReserved="false" />
 
         <io.legado.app.lib.prefs.ColorPreference
-            android:defaultValue="@color/goubin_paper"
+            android:defaultValue="@color/zheyou_paper"
             android:key="colorBackground"
             android:summary="@string/day_background_color"
             android:title="@string/background_color"
@@ -122,7 +122,7 @@
             app:iconSpaceReserved="false" />
 
         <io.legado.app.lib.prefs.ColorPreference
-            android:defaultValue="@color/goubin_surface"
+            android:defaultValue="@color/zheyou_surface"
             android:key="colorBottomBackground"
             android:summary="@string/day_navbar_color"
             android:title="@string/navbar_color"

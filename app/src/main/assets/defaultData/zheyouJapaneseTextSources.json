@@ -7,7 +7,7 @@
     "enabled": true,
     "enabledExplore": true,
     "concurrentRate": "1/500",
-    "bookSourceComment": "来源：yolo52/Yuedu 轻小说.json，GPL-3.0，https://github.com/yolo52/Yuedu 。勾彬适配：修正搜索翻页；按站点卷册与章节行号生成目录；缓存分卷文本并保留插图。无账号、付费或验证码解锁。来源收录及卷册数量不代表全本完整性保证。",
+    "bookSourceComment": "来源：yolo52/Yuedu 轻小说.json，GPL-3.0，https://github.com/yolo52/Yuedu 。柘栯适配：修正搜索翻页；按站点卷册与章节行号生成目录；缓存分卷文本并保留插图。无账号、付费或验证码解锁。来源收录及卷册数量不代表全本完整性保证。",
     "searchUrl": "https://api.mangacopy.com/api/v3/search/books?limit=20&offset={{(page-1)*20}}&q_type=&q={{key}}&_update=true",
     "exploreUrl": "[{\"title\":\"最新日轻\",\"url\":\"https://api.mangacopy.com/api/v3/books?ordering=-datetime_updated&limit=21&offset={{(page-1)*21}}&free_type=1&_update=true\"}]",
     "ruleSearch": {

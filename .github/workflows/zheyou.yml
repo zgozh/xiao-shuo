@@ -1,4 +1,4 @@
-name: Gouming Android
+name: Zheyou Android
 on:
   push:
     branches: [main]
@@ -26,7 +26,7 @@ jobs:
       - run: ./gradlew :app:assembleAppDebug :app:testAppDebugUnitTest --tests '*JapaneseSourceRuleTest' --tests '*Discovery*Test' --tests '*SearchResultMergerTest' --tests '*SearchResultDiffCallbackTest' --tests '*ContentQualityTest' --tests '*SourceRepositoryTest' --tests '*SourceRecommendationTest' --tests '*ReaderPresetsTest' --tests '*SearchProgressReporterTest' --tests '*SearchPaginationContractTest' --tests '*SearchCommandGateTest' --tests '*ReadStyleLineSpacingTest' --tests '*ChangeSource*Test' --tests '*SourceNavigationPolicyTest'
       - uses: actions/upload-artifact@v4
         with:
-          name: goubin-debug
+          name: zheyou-debug
           path: app/build/outputs/apk/app/debug/*.apk
   release:
     if: startsWith(github.ref, 'refs/tags/v')
@@ -51,22 +51,23 @@ jobs:
           RELEASE_KEY_STORE: ${{ secrets.RELEASE_KEY_STORE }}
           RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
-          RELEASE_KEY_ALIAS: goubin
-          RELEASE_STORE_FILE: ../signing/goubin.p12
+          RELEASE_STORE_FILE: ../signing/zheyou.p12
         run: |
           test -n "$RELEASE_KEY_STORE" || { echo 'Configure release signing secrets first'; exit 1; }
           mkdir -p signing
-          printf '%s' "$RELEASE_KEY_STORE" | base64 --decode > signing/goubin.p12
+          printf '%s' "$RELEASE_KEY_STORE" | base64 --decode > signing/zheyou.p12
+          export RELEASE_KEY_ALIAS="$(keytool -list -keystore signing/zheyou.p12 -storepass:env RELEASE_STORE_PASSWORD -J-Duser.language=en | awk -F, '/PrivateKeyEntry/ {print $1; exit}')"
+          test -n "$RELEASE_KEY_ALIAS" || { echo 'No private signing key found'; exit 1; }
           chmod +x gradlew
           ./gradlew :app:assembleAppRelease
           mkdir -p artifacts
-          cp app/build/outputs/apk/app/release/*.apk "artifacts/gouming_${GITHUB_REF_NAME#v}.apk"
+          cp app/build/outputs/apk/app/release/*.apk "artifacts/zheyou_${GITHUB_REF_NAME#v}.apk"
           cd artifacts
           sha256sum *.apk > SHA256SUMS.txt
       - name: Publish APK and source reference
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" artifacts/* --title "狗明小说 $GITHUB_REF_NAME" --generate-notes
+        run: gh release create "$GITHUB_REF_NAME" artifacts/* --title "柘栯小说 $GITHUB_REF_NAME" --generate-notes --latest
   publish-packaged-apk:
     if: github.ref == 'refs/heads/main'
     needs: build
@@ -79,10 +80,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          test -f downloads/gouming_1.0.5.apk || exit 0
+          test -f downloads/zheyou_1.0.6.apk
           (cd downloads && sha256sum -c SHA256SUMS.txt)
-          if gh release view v1.0.5 >/dev/null 2>&1; then
-            echo 'Version 1.0.5 already published; existing assets retained.'
-            exit 0
+          if gh release view v1.0.6 >/dev/null 2>&1; then
+            gh release upload v1.0.6 downloads/zheyou_1.0.6.apk downloads/SHA256SUMS.txt --clobber
+            gh release edit v1.0.6 --title '柘栯小说 1.0.6' --notes-file docs/RELEASE-1.0.6.md --latest
+          else
+            gh release create v1.0.6 downloads/zheyou_1.0.6.apk downloads/SHA256SUMS.txt --target "$GITHUB_SHA" --title '柘栯小说 1.0.6' --notes-file docs/RELEASE-1.0.6.md --latest
           fi
-          gh release create v1.0.5 downloads/gouming_1.0.5.apk downloads/SHA256SUMS.txt --target "$GITHUB_SHA" --title '狗明小说 1.0.5' --notes-file docs/RELEASE-1.0.5.md

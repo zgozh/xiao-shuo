@@ -1,10 +1,10 @@
-# 狗明小说
+# 柘栯小说
 
 一款无广告、无需注册的 Android 小说阅读器。基于 [LegadoTeam/legado](https://github.com/LegadoTeam/legado) 二次开发，复用成熟书源引擎、原生阅读器和本地书库，而非从零重写。
 
 支持 Android 8.0 及以上。源码遵循 GPL-3.0，保留上游许可与贡献者信息。
 
-[直接下载 1.0.5 APK](https://github.com/zgozh/xiao-shuo/raw/refs/heads/main/downloads/gouming_1.0.5.apk) · [版本发布](https://github.com/zgozh/xiao-shuo/releases) · [验证记录](docs/VALIDATION.md)
+[直接下载 1.0.6 APK](https://github.com/zgozh/xiao-shuo/raw/refs/heads/main/downloads/zheyou_1.0.6.apk) · [最新版本](https://github.com/zgozh/xiao-shuo/releases/latest) · [验证记录](docs/VALIDATION.md)
 
 ## 找书与阅读
 
@@ -56,9 +56,9 @@
 ./gradlew :app:testAppDebugUnitTest --tests '*ContentQualityTest' --tests '*SourceRepositoryTest' --tests '*SearchProgressReporterTest' --tests '*SearchPaginationContractTest' --tests '*SearchCommandGateTest' --tests '*ReadStyleLineSpacingTest'
 ```
 
-GitHub Actions 在 main 与 PR 构建调试 APK。发布工作流使用 `v*` 标签，并需要仓库 Secrets：`RELEASE_KEY_STORE`（本机 p12 文件的 Base64）、`RELEASE_STORE_PASSWORD`、`RELEASE_KEY_PASSWORD`。签名别名沿用 `goubin`。APK 资产名称使用 `gouming_版本号.apk`，应用内更新从 Release 标签识别版本。
+GitHub Actions 在 main 与 PR 构建调试 APK。发布工作流使用 `v*` 标签，并需要仓库 Secrets：`RELEASE_KEY_STORE`（本机 p12 文件的 Base64）、`RELEASE_STORE_PASSWORD`、`RELEASE_KEY_PASSWORD`。签名别名从密钥库读取，覆盖升级沿用原密钥与证书。APK 资产名称使用 `zheyou_版本号.apk`，应用内更新从 Release 标签识别版本。
 
-正式 APK 在本机签名，随 `downloads/` 提供；main 的 CI 构建通过后，工作流可使用仓库令牌把已有签名的包发布到 1.0.5 Release，无需上传签名私钥。从源码在 CI 签名时才需要上述 Secrets。
+正式 APK 在本机签名，`downloads/` 只保留当前版本；main 的 CI 构建通过后，工作流使用仓库令牌将已有签名的包发布到 1.0.6 Release 并标记为 Latest，无需上传签名私钥。从源码在 CI 签名时才需要上述 Secrets。历史提交及历史发布不重写，当前下载入口统一指向新版。
 
 应用内更新只查询本仓库的 Releases，不会安装上游项目的更新。
 
@@ -67,6 +67,6 @@ GitHub Actions 在 main 与 PR 构建调试 APK。发布工作流使用 `v*` 标
 - Android 底座：LegadoTeam/legado，基准提交 `330e606c4d57e08adc056ff8ab7a4132c784da9a`；上游 README 保存在 [docs/UPSTREAM-README.md](docs/UPSTREAM-README.md)。
 - 书源规则：[XIU2/Yuedu](https://github.com/XIU2/Yuedu)，GPL-3.0；快照与许可证保存在 `sources/xiu2.json` 和 `sources/XIU2-LICENSE`，应用内初始化文件与快照一致。
 - 远端目录：`sources/catalog.json`；内置离线目录为 `app/src/main/assets/source-catalog.json`。修改目录后请同步两者，已安装应用可在书源中心更新。
-- 原上游 CI 文件以 `.disabled` 扩展名保留，避免在新仓库中执行原项目发布或第三方上传流程；本项目使用 `goubin.yml`。
+- 原上游 CI 文件以 `.disabled` 扩展名保留，避免在新仓库中执行原项目发布或第三方上传流程；本项目使用 `zheyou.yml`。
 
-狗明小说的品牌、导航、书源中心、阅读面板与质量提示为此分支改动。原作者、社区规则作者和第三方组件的版权及许可继续保留，详见 [LICENSE](LICENSE) 与应用内「关于 → 开源许可」。
+柘栯小说的品牌、导航、书源中心、阅读面板与质量提示为此分支改动。原作者、社区规则作者和第三方组件的版权及许可继续保留，详见 [LICENSE](LICENSE) 与应用内「关于 → 开源许可」。

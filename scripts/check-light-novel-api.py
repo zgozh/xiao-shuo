@@ -14,7 +14,7 @@ session = requests.Session()
 session.trust_env = False
 if args.proxy:
     session.proxies = {'https': args.proxy}
-source = json.loads(Path('app/src/main/assets/defaultData/goubinLightNovelSources.json').read_text('utf-8'))[0]
+source = json.loads(Path('app/src/main/assets/defaultData/zheyouLightNovelSources.json').read_text('utf-8'))[0]
 base = source['bookSourceUrl']
 report = []
 for title in ['回复术士的重启人生', '无职转生', '义妹生活']:

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zheyou_primary">#275D49</color>
+    <color name="zheyou_accent">#846238</color>
+    <color name="zheyou_paper">#F7F5F0</color>
+    <color name="zheyou_surface">#EAE7DE</color>
+</resources>

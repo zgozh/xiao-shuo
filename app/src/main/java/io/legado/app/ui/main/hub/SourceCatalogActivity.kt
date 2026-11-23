@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit
 
 class SourceCatalogActivity : BaseActivity<ActivityReaderHubBinding>() {
     override val binding by viewBinding(ActivityReaderHubBinding::inflate)
-    private val cachedCatalog get() = File(filesDir, "goubin-source-catalog.json")
+    private val cachedCatalog get() = File(filesDir, "zheyou-source-catalog.json")
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         binding.titleBar.title = "书源中心"

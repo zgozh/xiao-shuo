@@ -25,9 +25,15 @@ import java.io.File
 
 object DefaultData {
 
-    fun installGoubinSources() {
-        if (appCtx.getPrefInt("goubinInitialSourcesVersion", 0) >= 4) return
-        val sources = listOf("goubinSources.json", "goubinCommunitySources.json", "goubinLightNovelSources.json", "goubinJapaneseTextSources.json").flatMap { name ->
+    fun installZheyouSources() {
+        if (appCtx.getPrefInt("zheyouInitialSourcesVersion", 0) >= 4) return
+        // Releases with codes 5 and 6 already installed this snapshot. Preserve
+        // sources the user subsequently removed when adopting the renamed key.
+        if (LocalConfig.versionCode in 5L..6L) {
+            appCtx.putPrefInt("zheyouInitialSourcesVersion", 4)
+            return
+        }
+        val sources = listOf("zheyouSources.json", "zheyouCommunitySources.json", "zheyouLightNovelSources.json", "zheyouJapaneseTextSources.json").flatMap { name ->
             val json = appCtx.assets.open("defaultData/$name").bufferedReader().use { it.readText() }
             GSON.fromJsonArray<BookSource>(json).getOrThrow()
         }.distinctBy { it.bookSourceUrl }
@@ -39,7 +45,7 @@ object DefaultData {
                 appDb.bookSourceDao.insert(it.addGroup("日本轻小说,轻小说译本"))
             }
         }
-        appCtx.putPrefInt("goubinInitialSourcesVersion", 4)
+        appCtx.putPrefInt("zheyouInitialSourcesVersion", 4)
     }
 
     fun upVersion() {
